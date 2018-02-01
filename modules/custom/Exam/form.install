@@ -1,0 +1,41 @@
+<?php
+
+ /*
+  *Creating function for creating table in database
+  */
+ 
+ /* implement hook schema*/
+
+ function form_schema() {
+   $schema['exam_details'] = [
+     'description' => 'Table which contains all the details of exam',
+     'fields' => [
+       'id' => [
+       	 'type' => 'serial',
+       	 'unsigned' => TRUE,
+       ],
+       'exam_id' => [
+       	 'type' => 'int',
+       	 'unsigned' => TRUE,
+       ],
+       'start_date' => [
+         'type' => 'int',
+         'unsigned' => TRUE,
+       ],  
+       'location' => [
+         'type' => 'varchar',
+         'length' => 255,
+         'not null' => TRUE,
+         'default' => '',
+       ],
+       'email' => [
+         'type' => 'varchar',
+         'length' => 255,
+         'not null' => TRUE,
+         'default' => '',
+       ]
+     ],	
+     'primary key' => ['id'], 
+   ];
+   return $schema;
+ }

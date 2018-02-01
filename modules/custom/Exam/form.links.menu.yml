@@ -1,0 +1,13 @@
+form.exam_details:
+  title: 'Exam form'
+  route_name: form.exam_details
+  parent: system.admin_content
+  menu_name: Exam
+  weight: 1
+
+form.subject_details:
+  title: 'Subject Details'
+  route_name: form.subject_details
+  parent: system.admin_config
+  menu_name: Subject
+  weight: 1

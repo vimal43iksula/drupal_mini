@@ -1,0 +1,42 @@
+<?php
+
+
+
+use Drupal\Core\Form\FormStateInterface;
+ use Drupal\Core\Database\Database;
+
+
+
+function form_form_node_exam_details_form_alter(&$form, FormStateInterface &$form_state, $form_id) {
+
+  
+  foreach (array_keys($form['actions']) as $action) {
+    if ($action != 'preview' && isset($form['actions'][$action]['#type']) && $form['actions'][$action]['#type'] === 'submit') {
+      $form['actions'][$action]['#submit'][] = 'form_store_exam_details_submit';
+    }
+  }
+  $form['actions']['submit']['#value'] = t('Save Exam Details');
+}
+
+
+function form_store_exam_details_submit(&$form, FormStateInterface &$form_state) {
+
+  
+  $values = $form_state->getValues();
+  
+  $details['start_date'] = strtotime($values['field_start_date'][0]['value']);
+  $details['location'] = $values['field_location'][0]['value'];
+  $details['email'] = $values['field_email_exam'][0]['value'];
+
+  $connection = Database::getConnection();
+  $connection->insert('exam_details')->fields(
+   [
+     'exam_id' => 123,
+     'start_date' => $details['start_date'],
+     'location' => $details['location'],
+     'email' => $details['email'],
+   ]
+  )->execute();
+
+  drupal_set_message('Employee Details has been stored successfully in custom table.');
+}

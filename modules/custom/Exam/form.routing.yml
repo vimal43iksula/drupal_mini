@@ -1,0 +1,17 @@
+form.exam_details:
+  path: '/examform'
+  defaults:
+    _form: '\Drupal\form\Form\ExamDetails'
+    _title: 'Exam Details'
+  requirements:
+    _access: 'TRUE'
+
+form.subject_details:
+  path: '/subject'
+  defaults:
+    _form: '\Drupal\form\Form\SubjectDetails'
+    _title: 'Suject Details'
+  requirements:
+    _access: 'TRUE'    
+
+
