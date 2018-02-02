@@ -12,6 +12,21 @@ form.subject_details:
     _form: '\Drupal\form\Form\SubjectDetails'
     _title: 'Suject Details'
   requirements:
-    _access: 'TRUE'    
+    _access: 'TRUE' 
+    
+form.add_data:
+  path: '/display'
+  defaults:
+    _controller: '\Drupal\form\Controller\Display::showdata'
+    _title: 'Display'
+  requirements:
+    _permission: 'access content'
 
+form.content:
+  path: '/exam-form/{first}'
+  defaults:
+    _controller: '\Drupal\form\Controller\LinkController::content'
+    _title: 'Drupal View'
+  requirements:
+    _permission: 'generate example content'    
 

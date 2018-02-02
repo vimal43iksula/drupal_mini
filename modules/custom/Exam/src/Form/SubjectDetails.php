@@ -50,11 +50,33 @@ class SubjectDetails extends ConfigFormBase {
       '#default_value' => $config->get('subject_name_3') ? $config->get('subject_name_3') : '',
       '#required' => TRUE,
     ];
-
+    
+    $form['subject'] = [
+      '#type' => 'select',
+      '#title' => ('subject'),
+      '#options' => [
+        '1' => t('marathi'),
+        '2' => t('Urdu'),
+      ],
+      '#default_value' => $config->get('subject') ? $config->get('subject') : '',
+      '#required' => TRUE,
+    ];
+    
+    $form['contact'] = [
+      '#type' => 'tel',
+      '#title' => ('Contact Info'),
+      '#default_value' => $config->get('contact') ? $config->get('contact') : '',
+      '#required' => TRUE,
+    ];
    
     return parent::buildForm($form, $form_state);
   }
-
+     public function validateForm(array &$form, FormStateInterface $form_state) {
+    parent::validateForm($form, $form_state);
+      if(strlen($form_state->getValue('contact'))<10 || strlen($form_state->getValue('contact'))>10){
+           $form_state->setErrorByName('contact', $this->t('Contact number must be equal to 10.'));
+      }
+    }
   
   public function submitForm(array &$form, FormStateInterface $form_state) {
     parent::submitForm($form, $form_state);
@@ -65,6 +87,8 @@ class SubjectDetails extends ConfigFormBase {
       ->set('subject_name_1', $values['subject_name_1'])
       ->set('subject_name_2', $values['subject_name_2'])
       ->set('subject_name_3', $values['subject_name_3'])
+      ->set('subject', $values['subject']) 
+      ->set('contact', $values['contact'])  
       ->save();
   }
 }

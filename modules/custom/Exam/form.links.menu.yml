@@ -11,3 +11,10 @@ form.subject_details:
   parent: system.admin_config
   menu_name: Subject
   weight: 1
+
+form.add_data:
+  title: 'Display Table'
+  route_name: form.add_data
+  parent: system.admin_config
+  menu_name: Subject
+  weight: 2  

@@ -6,6 +6,18 @@ use Drupal\Core\Form\FormStateInterface;
  use Drupal\Core\Database\Database;
 
 
+/**
+* Implements hook_theme().
+*/
+function form_theme($existing, $type, $theme, $path) {
+
+  return [
+    'employee_details_template' => [
+      'render element' => 'form',
+      'template' => 'employee-details-template',
+    ],
+  ];
+}
 
 function form_form_node_exam_details_form_alter(&$form, FormStateInterface &$form_state, $form_id) {
 
@@ -39,4 +51,12 @@ function form_store_exam_details_submit(&$form, FormStateInterface &$form_state)
   )->execute();
 
   drupal_set_message('Employee Details has been stored successfully in custom table.');
+}
+
+function getData($id) {
+ return \Drupal::database()->select('exam_details', 'n')
+            ->fields('n', array('id', 'exam_id', 'start_date', 'location', 'email'))
+            ->condition('n.id', $id)
+            ->execute()->fetchAll();
+
 }

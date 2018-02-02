@@ -14,29 +14,33 @@
      return 'exam_details';
    }    
 
-   public function buildForm(array $form, FormStateInterface $form_state) {
+   public function buildForm(array $form, FormStateInterface $form_state, $data=NULL) {
 
     $form['exam_id'] = [
       '#type' => 'textfield',
       '#title' => $this->t('exam_id'),
+      '#default_value' => $data[0]->exam_id ? $data[0]->exam_id : '',
       '#required' => TRUE,
     ];
    
      $form['start_date'] = [
       '#type' => 'date',
       '#title' => $this->t('start_date'),
+      '#default_value' => $data[0]->start_date ? $data[0]->start_date : '',
       '#required' => TRUE,
     ];
 
      $form['location'] = [
       '#type' => 'textfield',
       '#title' => $this->t('location'),
+      '#default_value' => $data[0]->location ? $data[0]->location : '',
       '#required' => TRUE,
     ];
 
      $form['email'] = [
       '#type' => 'email',
       '#title' => $this->t('email'),
+      '#default_value' => $data[0]->email ? $data[0]->email : '',
       '#required' => TRUE,
     ];
 
@@ -47,9 +51,10 @@
           'class' => ['btn'],
        ],
     ];
-      return $form;
-    }
-    
+    $form['#theme'] = ['employee_details_template'];
+    return $form;
+  }
+
     public function ValidateForm(array &$form, FormStateInterface $form_state){
       if (date('Y-m-d') < $form_state->getValue('start_date')) {
         $form_state->setErrorByName('start_date', $this->t('Date should less than current date.'));
