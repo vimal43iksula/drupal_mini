@@ -1,0 +1,17 @@
+ajax.form:
+    path: '/ajax-form'
+    defaults: 
+        _form: '\Drupal\location\Form\CountryState'
+        _title: 'Country Wise State'
+    requirements:
+        _access: 'TRUE'
+        
+ajax.form1:
+    path: '/ajax-form1'
+    defaults: 
+        _form: '\Drupal\location\Form\SelectDependent'
+        _title: 'AJAX FORM'
+    requirements:
+        _access: 'TRUE'        
+        
+  
