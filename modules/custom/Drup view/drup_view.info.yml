@@ -1,0 +1,5 @@
+name: Drup View
+description: An example module for Drupal view.
+package: Custom
+type: module
+core: 8.x

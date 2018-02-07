@@ -1,0 +1,38 @@
+<?php
+
+function drup_view_schema() {
+  $schema['bd_contact'] = array(
+    'fields' => array(
+      'id'=>array(
+        'type'=>'serial',
+        'not null' => TRUE,
+      ),
+      'name'=>array(
+        'type' => 'varchar',
+        'length' => 40,
+        'not null' => TRUE,
+      ),
+      'message'=>array(
+        'type' => 'varchar',
+        'length' => 255,
+        'not null' => TRUE,
+      ),
+    ),
+    'primary key' => array('id'),
+  );
+
+  return $schema;
+
+}
+function drup_view_update_8300() {
+  
+  // For non-multipass updates, the signature can simply be;
+  // function hook_update_N() {
+  // For most updates, the following is sufficient.
+  db_add_field('bd_contact', 'phone_no', array(
+    'type' => 'int',
+    'not null' => TRUE,
+    'description' => 'My new integer column.',
+  ));
+
+}

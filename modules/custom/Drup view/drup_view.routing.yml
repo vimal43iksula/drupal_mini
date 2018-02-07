@@ -1,0 +1,15 @@
+drup_view.content:
+  path: '/content'
+  defaults:
+    _controller: '\Drupal\drup_view\Controller\BasicController::content'
+    _title: 'Drupal View'
+  requirements:
+    _permission: 'generate example content'
+
+drup_view.content1:
+  path: '/content1'
+  defaults:
+    _controller: '\Drupal\drup_view\Controller\BasicController::content1'
+    _title: 'Drupal View'
+  requirements:
+    _permission: 'generate example content'
