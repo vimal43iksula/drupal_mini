@@ -5,17 +5,18 @@ function drup_view_schema() {
     'fields' => array(
       'id'=>array(
         'type'=>'serial',
-        'not null' => TRUE,
+
       ),
       'name'=>array(
         'type' => 'varchar',
         'length' => 40,
         'not null' => TRUE,
+	'default' => '',
       ),
       'message'=>array(
         'type' => 'varchar',
-        'length' => 255,
         'not null' => TRUE,
+	'default' => '',
       ),
     ),
     'primary key' => array('id'),
@@ -32,6 +33,7 @@ function drup_view_update_8300() {
   db_add_field('bd_contact', 'phone_no', array(
     'type' => 'int',
     'not null' => TRUE,
+    'default' => '',	
     'description' => 'My new integer column.',
   ));
 

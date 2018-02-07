@@ -3,6 +3,8 @@
 namespace Drupal\drup_view\Controller;
 
 use Drupal\Core\Controller\ControllerBase;
+use Drupal\node\Entity\Node;
+use Drupal\user\Entity\User;
 
 class BasicController extends ControllerBase {
 
@@ -11,17 +13,34 @@ class BasicController extends ControllerBase {
    *
    * @return array
    */
-  public function content() {
 
-    return [
-      '#markup' => t('Hello India!'),
-    ];
+  public function content($first) {
+	 if(is_numeric($first)){
+    $user_load = User::load($first);
+      if(!empty($user_load)){
+        return[
+          '#markup' =>  t($user_load->name->getString())
+            ];
+       }
+    $node_load = Node::load($first);
+      if(!empty($node_load)){
+        return [
+          '#markup' => t($node_load->title->getString())
+            ];
+        }
+
+  
+  return[
+    '#markup'  =>  t('value not found')
+     ];   
+   }
+  return[
+   '#markup'  =>  t($first)
+     ];
   }
- public function content1() {
-
-    return [
-      '#markup' => t('Hello India11!'),
-    ];
-  }
-
 }
+
+
+
+
+

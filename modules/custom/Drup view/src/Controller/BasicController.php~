@@ -11,11 +11,16 @@ class BasicController extends ControllerBase {
    *
    * @return array
    */
-  public function content() {
 
-    return [
-      '#markup' => t('Hello India!'),
-    ];
+  public function content($var) {
+	$a = gettype($var);
+	if($a == "integer")
+return[
+   '#markup' => $a,
+];
+   else return [
+    '#markup' => 'value not found',
+]; 
   }
  public function content1() {
 

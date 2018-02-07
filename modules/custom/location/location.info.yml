@@ -1,0 +1,10 @@
+name: Location Form
+description: Form which will use Ajax
+package: Custom
+type: module
+core: 8.x
+
+
+
+
+
