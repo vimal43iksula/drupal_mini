@@ -1,0 +1,15 @@
+custom_example.first_form:
+ path: '/form'
+ defaults:
+   _title: 'First form'
+   _form: '\Drupal\custom_example\Form\FirstForm'
+ requirements:
+   _permission: 'access content'
+   
+custom_example.second_form:
+ path: '/second-form'
+ defaults:
+   _title: 'Second form'
+   _form: '\Drupal\custom_example\Form\SecondForm'
+ requirements:
+   _permission: 'access content'   

@@ -147,7 +147,7 @@ class CountryState extends FormBase {
   }
 
   /**
-   * Function to get state value dependening on country
+   * Function to get state value depending on country
    * @param type $tid
    * @return type
    */
